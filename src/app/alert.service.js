@@ -1,4 +1,6 @@
-class AlertService {
+import { inputsAreValid } from '../utilis/inputsAreValid';
+
+export class AlertService {
     constructor() {
         errorBox = document.getElementById('error');
     }

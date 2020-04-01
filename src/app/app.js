@@ -1,7 +1,8 @@
-const alertService = new AlertService();
-const componentService = new ComponentService();
+import { parsedInputs } from '../utilis/parseInputs';
+import { inputsAreValid } from '../utilis/inputsAreValid';
 
-const run = (alertService, componentService) => {
+
+export const run = (alertService, componentService) => {
   alertService.hideErrors();
 
 
