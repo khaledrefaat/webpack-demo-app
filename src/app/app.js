@@ -1,22 +1,18 @@
-import { parsedInputs } from '../utilis/parseInputs';
-import { inputsAreValid } from '../utilis/inputsAreValid';
-
-
+import { inputsAreValid } from "./utils/inputs-are-valid";
+import { parseInputs } from "./utils/parse-inputs";
 export const run = (alertService, componentService) => {
   alertService.hideErrors();
 
-
   componentService.onClick(() => {
-
-    hideErrors();
+    alertService.hideErrors();
+    const inputs = componentService.getInputs();
     const parsedInputs = parseInputs(...inputs);
     if (inputsAreValid(...parsedInputs)) {
       const [numA, numB] = parsedInputs;
-      resultDiv.innerText = numA + numB;
+      componentService.setResult(numA + numB);
     } else {
-      resultDiv.innerText = "";
-      handleAdditionError(inputs, parsedInputs);
+      componentService.setResult("");
+      alertService.handleAdditionError(inputs, parsedInputs);
     }
   });
-}
-run(alertService, componentService);
+};
